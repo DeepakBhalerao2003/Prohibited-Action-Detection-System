@@ -32,12 +32,12 @@ const FaceImage = z
   });
 
 const formSchema = z.object({
-  Name: z.string(),
-  PrisonerNumber: z.string(),
-  Age: z.string(),
-  Height: z.string(),
-  Weight: z.string(),
-  Gender: z.enum(["Male", "Female", "Others"]),
+  Name: z.string().min(1, "Name is required"),
+  PrisonerNumber: z.string().min(1, "Prisoner Number is required"),
+  Age: z.string().min(1, "Age is required"),
+  Height: z.string().min(1, "Height is required"),
+  Weight: z.string().min(1, "Weight is required"),
+  Gender: z.enum(["Male", "Female", "Others"], { required_error: "Gender is required" }),
   FaceImages: z.array(FaceImage),
 });
 
